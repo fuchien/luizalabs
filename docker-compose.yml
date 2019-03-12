@@ -1,7 +1,7 @@
 version: "3"
 
 services:
-  app:
+  luizalabs:
     build: .
     ports:
       - "3000:3000"
