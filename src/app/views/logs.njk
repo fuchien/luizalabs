@@ -1,0 +1,13 @@
+{% extends "_layouts/default.njk" %} {% block body %}
+<div class="logs">
+  <ul>
+    {% for log in logs %}
+    <a href="/logs/{{ log.gameId }}">
+      <li>
+        Game {{ log.gameId }}
+      </li>
+    </a>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock %}
