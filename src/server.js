@@ -1,15 +1,25 @@
 const express = require('express');
+const mongoose = require('mongoose');
 const nunjucks = require('nunjucks');
 const path = require('path');
+const databaseConfig = require('./config/database');
 
 class App {
   constructor() {
     this.express = express();
     this.isDev = process.env.NODE_ENV !== 'production';
 
+    this.database();
     this.middlewares();
     this.views();
     this.routes();
+  }
+
+  database() {
+    mongoose.connect(databaseConfig.uri, {
+      useCreateIndex: true,
+      useNewUrlParser: true,
+    });
   }
 
   middlewares() {}
