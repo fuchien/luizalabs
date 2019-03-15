@@ -16,7 +16,7 @@ class LogService {
   }
 
   async show(gameId) {
-    return new Promise((resolve, reject) => {
+    return new Promise(async (resolve, reject) => {
       try {
         const log = await Log.findOne({ gameId });
         resolve(log);
@@ -26,11 +26,11 @@ class LogService {
           err,
         });
       }
-    })
+    });
   }
 
   async index() {
-    return new Promise((resolve, reject) => {
+    return new Promise(async (resolve, reject) => {
       try {
         const logs = await Log.find({}, null, {
           sort: {
@@ -41,23 +41,23 @@ class LogService {
       } catch (err) {
         reject({
           msg: 'Error to get all game log',
-          err: err
-        })
+          err,
+        });
       }
-    })
+    });
   }
 
   async destroy() {
-    return new Promise((resolve, reject) => {
+    return new Promise(async (resolve, reject) => {
       try {
         resolve(await Log.deleteMany());
       } catch (err) {
         reject({
           msg: 'Error to destroy all document',
-          err
-        })
+          err,
+        });
       }
-    })
+    });
   }
 }
 
