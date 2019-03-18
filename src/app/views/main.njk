@@ -1,24 +1,11 @@
-{% extends "_layouts/default.njk" %}
+{% extends "_layouts/default.njk" %} {% block body %}
+<form action="/file" method="post" enctype="multipart/form-data">
+  {% if msg %}
+    <strong>{{ msg }}</strong>
+  {% endif %}
 
-{% block body %}
-  <form action="/file" method="post" enctype="multipart/form-data">
+  <input type="file" id="file" name="file" />
 
-    <label for="file">
-      <img src="/images/file.svg" height="24">
-    </label>
-
-    <input type="file" id="file" name="file" >
-
-    <button type="submit">Enviar</button>
-  </form>
-
-  <script>
-    const fileInput = document.getElementById('file')
-    const img = document.querySelector('label[for=file] img')
-
-    fileInput.onchange = function (e) {
-      img.classList.add('preview')
-      img.src = URL.createObjectURL(e.target.files[0])
-    }
-  </script>
+  <button type="submit">Enviar</button>
+</form>
 {% endblock %}
