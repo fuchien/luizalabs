@@ -41,16 +41,11 @@ body {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
 
-.main-wrapper form > img {
-  margin-bottom: 20px;
-}
-
 .main-wrapper form input:not([type="checkbox"]) {
   height: 40px;
   padding: 0 15px;
-  border: 1px solid #eee;
   border-radius: 4px;
-  margin-bottom: 10px;
+  margin: 10px;
   font-size: 14px;
   color: #444;
 }
@@ -66,15 +61,6 @@ body {
   align-items: center;
   margin-bottom: 20px;
   overflow: hidden;
-}
-
-.main-wrapper form label[for="file"] img.preview {
-  width: 100%;
-  min-height: 100%;
-}
-
-.main-wrapper form input[type="file"] {
-  display: none;
 }
 
 .main-wrapper form button {
