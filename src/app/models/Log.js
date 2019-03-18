@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const Log = new mongoose.Schema({
-  gameId: {
+  game_id: {
     type: Number,
     required: true,
   },
