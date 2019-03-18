@@ -4,5 +4,16 @@ services:
   luizalabs:
     build: .
     ports:
-      - "3000:3000"
+      - "3001:3001"
+    depends_on:
+      - db
     command: npm start
+
+  db:
+    image: postgres:10
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DBNAME=luizalabs
+      - POSTGRES_USER=luizalabs
+      - POSTGRES_PASS=luizalabs
