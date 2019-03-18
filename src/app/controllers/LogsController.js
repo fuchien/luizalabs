@@ -7,7 +7,7 @@ class LogsController {
   }
 
   async show(req, res) {
-    const game = await LogService.show(req.params.gameId);
+    const game = await LogService.show(req.params.game_id);
     return res.send({ game });
   }
 }
