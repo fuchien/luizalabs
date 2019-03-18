@@ -16,6 +16,6 @@ routes.post('/file', upload.single('file'), FileController.store);
 
 // GAME LOG
 routes.get('/logs', LogsController.index);
-routes.get('/logs/:gameId', LogsController.show);
+routes.get('/logs/:game_id', LogsController.show);
 
 module.exports = routes;
