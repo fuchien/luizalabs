@@ -5,9 +5,9 @@
   {% else %}
     <ul>
       {% for log in logs %}
-      <a href="/logs/{{ log.gameId }}">
+      <a href="/logs/{{ log.game_id }}">
         <li>
-          Game {{ log.gameId }}
+          Game {{ log.game_id }}
         </li>
       </a>
       {% endfor %}
