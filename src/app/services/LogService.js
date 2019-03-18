@@ -1,10 +1,11 @@
 const Log = require('../models/Log');
+const { Game } = require('../models');
 
 class LogService {
   create(log) {
     return new Promise(async (resolve, reject) => {
       try {
-        const logCreated = await Log.create({ ...log });
+        const logCreated = await Game.create({ ...log });
         resolve(logCreated);
       } catch (err) {
         reject({
@@ -15,11 +16,15 @@ class LogService {
     });
   }
 
-  async show(gameId) {
+  async show(game_id) {
     return new Promise(async (resolve, reject) => {
       try {
-        const log = await Log.findOne({ gameId });
-        resolve(log);
+        const game = await Game.findOne({ where: { game_id } });
+        if (game) {
+          game.kills ? (game.kills = JSON.parse(game.kills)) : game.kills;
+          game.players ? (game.players = game.players.split(',')) : game.players;
+        }
+        resolve(game);
       } catch (err) {
         reject({
           msg: 'Error to show game by id',
@@ -32,15 +37,18 @@ class LogService {
   async index() {
     return new Promise(async (resolve, reject) => {
       try {
-        const logs = await Log.find({}, null, {
-          sort: {
-            _id: 'asc',
-          },
+        const games = await Game.findAll({
+          where: {},
+          order: [['game_id']],
         });
-        resolve(logs);
+        games.forEach((game) => {
+          game.kills = JSON.parse(game.kills);
+          game.players = game.players.split(',');
+        });
+        resolve(games);
       } catch (err) {
         reject({
-          msg: 'Error to get all game log',
+          msg: 'Error to get all game',
           err,
         });
       }
@@ -50,7 +58,11 @@ class LogService {
   async destroy() {
     return new Promise(async (resolve, reject) => {
       try {
-        resolve(await Log.deleteMany());
+        const destroyed = await Game.destroy({
+          where: {},
+          truncate: true,
+        });
+        resolve(destroyed);
       } catch (err) {
         reject({
           msg: 'Error to destroy all document',
