@@ -1,3 +1,7 @@
+require('dotenv').config({
+  path: process.env.NODE_ENV === 'test' ? '.env.test' : '.env',
+});
+
 const express = require('express');
 const mongoose = require('mongoose');
 const nunjucks = require('nunjucks');
@@ -9,7 +13,7 @@ class App {
     this.express = express();
     this.isDev = process.env.NODE_ENV !== 'production';
 
-    this.database();
+    // this.database();
     this.middlewares();
     this.views();
     this.routes();
