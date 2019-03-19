@@ -2,11 +2,15 @@ const request = require('supertest');
 const server = require('../../src/server');
 const FileService = require('../../src/app/services/FileService');
 const LogService = require('../../src/app/services/LogService');
+const truncate = require('../utils/truncate');
+
+jest.setTimeout(30000);
 
 describe('File', () => {
   beforeEach(async () => {
+    await truncate();
     await FileService.destroy();
-    await LogService.destroy();
+    // await LogService.destroy();
   });
 
   it('Should return all games when function index called', async () => {
