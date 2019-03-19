@@ -17,6 +17,7 @@ class FileController {
       await FileService.handleFile(file);
       return res.redirect('/logs');
     } catch (err) {
+      console.log('ERRROR ', err);
       return res.render('main', { msg: 'Erro ao manipular o arquivo, tente novamente' });
     }
   }
