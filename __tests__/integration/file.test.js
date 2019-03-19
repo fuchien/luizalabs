@@ -1,18 +1,23 @@
 const fs = require('fs');
 const request = require('supertest');
 const { promisify } = require('util');
-const { readFile } = require('fs');
+const { readdir, readFile } = require('fs');
 
 const readFilePromise = promisify(readFile);
+const readDirPromise = promisify(readdir);
 const path = require('path');
 const server = require('../../src/server');
 const FileService = require('../../src/app/services/FileService');
 const LogService = require('../../src/app/services/LogService');
+const truncate = require('../utils/truncate');
+
+jest.setTimeout(30000);
 
 describe('File', () => {
   beforeEach(async () => {
+    await truncate();
     await FileService.destroy();
-    await LogService.destroy();
+    // await LogService.destroy();
   });
 
   it('should save all file games log in database', async () => {
@@ -34,8 +39,7 @@ describe('File', () => {
     const response = await request(server).get('/');
     expect(response.status).toBe(200);
     const uploads = path.resolve(__dirname, '..', '..', 'uploads');
-    fs.readdir(uploads, (err, files) => {
-      expect(files.length).toBe(0);
-    });
+    const files = await readDirPromise(uploads);
+    expect(files.length).toBe(0);
   });
 });
