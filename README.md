@@ -4,7 +4,7 @@
 
 ## Developing
 
-First, you need install [**docker**](#Docker) or you can run only with [**node**](#Node)
+First, you need install [**docker**](#Docker) for **server** and **database** or you can run with [**node**](#Node) to start server
 
 _Clone the repository_
 
