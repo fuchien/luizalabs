@@ -7,4 +7,23 @@ services:
       - ./:/usr/app
     ports:
       - "3001:3001"
-    command: npm start
+    container_name: luizalabs
+    hostname: luizalabs
+    depends_on:
+      - db
+    command: npm run dev
+    environment:
+      - DB_HOST=db
+      - DB_USER=luizalabs
+      - DB_PASS=luizalabs
+      - DB_NAME=luizalabs
+  db:
+    image: postgres
+    ports:
+      - "5432:5432"
+    container_name: db
+    hostname: db
+    environment:
+      - POSTGRES_DBNAME=luizalabs
+      - POSTGRES_USER=luizalabs
+      - POSTGRES_PASS=luizalabs
