@@ -4,7 +4,7 @@
 
 ## Developing
 
-First, you need install **`docker`**
+First, you need install [**docker**](#Docker) or you can run only with [**node**](#Node)
 
 _Clone the repository_
 
@@ -12,10 +12,20 @@ _Clone the repository_
 git clone https://github.com/fuchien/luizalabs.git
 ```
 
-_Run docker-compose to start the server_
+## Docker
+
+_Run docker-compose to start the server and database_
 
 ```
-docker-compose up
+docker-compose up --build
+```
+
+---
+
+## Node
+
+```
+npm install
 ```
 
 _Run postgres database_
@@ -26,17 +36,26 @@ docker run --name luizalabs -p 5432:5432 -e POSTGRES_DBNAME=luizalabs -e POSTGRE
 
 _Create table by migration_
 
+---
+
+### For both, you need create table running **db:migrate**
+
 ```
+// With docker
+docker exec luizalabs npx sequelize db:migrate
+
+// With node
 npx sequelize db:migrate
 ```
 
 _Open your favourite browser, and enter_
 
 ```
-http://localhost:3000
+http://localhost:3001
 ```
 
 **You need select file button, and put the file locate in**
+
 ```
 /backend_test/src/public/games.log
 ```
@@ -50,6 +69,7 @@ The backend will receive the file, save file in **uploads** folder, get the file
 ## Testing
 
 To test the application, only need to run script
+
 ```
 npm run test
 ```
@@ -60,8 +80,8 @@ You wil have each test in **terminal** and **coverage** for each file
 
 ## Endpoint list:
 
-- [**GET**  /logs](#getAllLogs)
-- [**GET**  /logs/:id](#getLogById)
+- [**GET** /logs](#getAllLogs)
+- [**GET** /logs/:id](#getLogById)
 
 ---
 
