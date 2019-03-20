@@ -55,6 +55,8 @@ class FileService {
     });
     const uniquePlayersGames = this.handleDuplicatedPlayers(games);
     uniquePlayersGames.forEach((game) => {
+      // For kills object, I didn't lose time to create another schema
+      // For players, in sqlite database, doesn't have dataType ARRAY
       game.kills = JSON.stringify(game.kills);
       game.players = game.players.join(',');
     });
