@@ -10,7 +10,6 @@ describe('File', () => {
   beforeEach(async () => {
     await truncate();
     await FileService.destroy();
-    // await LogService.destroy();
   });
 
   it('Should return all games when function index called', async () => {
