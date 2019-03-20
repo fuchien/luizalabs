@@ -1,4 +1,3 @@
-const Log = require('../models/Log');
 const { Game } = require('../models');
 
 class LogService {
@@ -21,6 +20,7 @@ class LogService {
       try {
         const game = await Game.findOne({ where: { game_id } });
         if (game) {
+          // return kills object and player array
           game.kills ? (game.kills = JSON.parse(game.kills)) : game.kills;
           game.players ? (game.players = game.players.split(',')) : game.players;
         }
@@ -42,6 +42,7 @@ class LogService {
           order: [['game_id']],
         });
         games.forEach((game) => {
+          // return kills object and player array
           game.kills = JSON.parse(game.kills);
           game.players = game.players.split(',');
         });
