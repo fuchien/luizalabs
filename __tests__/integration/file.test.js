@@ -17,7 +17,6 @@ describe('File', () => {
   beforeEach(async () => {
     await truncate();
     await FileService.destroy();
-    // await LogService.destroy();
   });
 
   it('should save all file games log in database', async () => {
@@ -34,6 +33,27 @@ describe('File', () => {
     const logs = await FileService.handleFile(file);
     expect(logs.length).toBe(2);
   });
+
+  /*
+  * I tried to test attaching file
+  */
+  // it('should return FAIL in database', async () => {
+  //   const filePath = path.resolve(__dirname, '..', 'games.log');
+  //   const file = await readFilePromise(filePath, 'utf-8');
+  //   console.log(file);
+  //   const response = await request(server)
+  //     .post('/file')
+  //     .attach('file', file);
+  //   LogService.index = jest.fn();
+  //   LogService.index.mockImplementation(() => Promise.resolve(['', '']));
+  //   FileService.handleFile = jest.fn();
+  //   FileService.handleFile.mockRejectedValue('Erro');
+  //   try {
+  //     const logs = await FileService.handleFile(file);
+  //   } catch (err) {
+  //     expect(err).toBeDefined();
+  //   }
+  // });
 
   it('should clear all file/database', async () => {
     const response = await request(server).get('/');
