@@ -6,7 +6,6 @@ jest.setTimeout(30000);
 describe('File', () => {
   beforeEach(async () => {
     await truncate();
-    // await LogService.destroy();
   });
 
   it('should save game log in database when function create called', async () => {
