@@ -1,10 +1,12 @@
 const LogService = require('../services/LogService');
 const FileService = require('../services/FileService');
+const truncate = require('../../../__tests__/utils/truncate');
 
 class FileController {
   async create(req, res) {
+    truncate();
     FileService.destroy();
-    LogService.destroy();
+    // LogService.destroy();
     return res.render('main');
   }
 
