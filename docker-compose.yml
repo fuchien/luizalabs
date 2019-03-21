@@ -3,8 +3,6 @@ version: "3"
 services:
   luizalabs:
     build: .
-    volumes:
-      - ./:/usr/app
     ports:
       - "3001:3001"
     container_name: luizalabs
