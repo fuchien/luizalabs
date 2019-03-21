@@ -11,7 +11,7 @@ services:
     hostname: luizalabs
     depends_on:
       - db
-    command: npm run dev
+    command: npm start
     environment:
       - DB_HOST=db
       - DB_USER=luizalabs
