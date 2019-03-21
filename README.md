@@ -1,10 +1,10 @@
 # Luizalabs backend test
 
-> Test to read game log file, manipulate the file data and create API to show all game data
+> Challenge to read game log file, manipulate the file data and create API to show all game data
 
 ## Developing
 
-First, you need install [**docker**](#Docker) for **server** and **database** or you can run with [**node**](#Node) to start server
+First, you need install [**docker**](#Docker) and [**docker-compose**](https://docs.docker.com/compose/install) for **server** and **database** or you can run with [**node**](#Node) to start server
 
 _Clone the repository_
 
