@@ -4,7 +4,7 @@
 
 ## Developing
 
-First, you need install [**docker**](#Docker) and [**docker-compose**](https://docs.docker.com/compose/install) for **server** and **database** or you can run with [**node**](#Node) to start server
+First, you need to install [**docker**](#Docker) and [**docker-compose**](https://docs.docker.com/compose/install) for **server** and **database** or you can run with [**node**](#Node) to start server
 
 _Clone the repository_
 
@@ -54,7 +54,7 @@ _Open your favourite browser, and enter_
 http://localhost:3001
 ```
 
-**You need select file button, and put the file locate in**
+**You need click file button, and put the file located in**
 
 ```
 /backend_test/src/public/games.log
@@ -74,7 +74,7 @@ To test the application, only need to run script
 npm run test
 ```
 
-You wil have each test in **terminal** and **coverage** for each file
+You will have each test in **terminal** and **coverage** for each file
 
 ---
 
